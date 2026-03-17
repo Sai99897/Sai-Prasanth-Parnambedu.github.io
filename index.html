@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sai Prasanth Parnambedu — Robotics & AI Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #080c12;
+      --bg2: #0d1219;
+      --bg3: #131b26;
+      --surface: #161e2c;
+      --border: #1e2d42;
+      --cyan: #00d4ff;
+      --amber: #ffaa00;
+      --orange: #ff6535;
+      --text: #d8e4f0;
+      --text-dim: #6a85a0;
+      --text-bright: #f0f7ff;
+      --grid-line: rgba(0,212,255,0.04);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Crimson Pro', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── GRID BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    section, nav, footer { position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background: rgba(8,12,18,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: var(--cyan);
+      text-transform: uppercase;
+    }
+    .nav-logo span { color: var(--text-dim); }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cyan); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 60px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
+
+    .hero-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(64px, 10vw, 140px);
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+      color: var(--text-bright);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+    }
+
+    .hero-name .accent { color: var(--cyan); }
+
+    .hero-subtitle {
+      font-family: 'Crimson Pro', serif;
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-dim);
+      max-width: 640px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.7s forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.9s forwards;
+    }
+
+    .btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      border: 1px solid;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--cyan);
+      border-color: var(--cyan);
+      color: var(--bg);
+    }
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--cyan);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text-dim);
+    }
+    .btn-ghost:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* Big decorative text */
+    .hero-bg-text {
+      position: absolute;
+      right: -20px;
+      bottom: 40px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(100px, 18vw, 260px);
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(0,212,255,0.06);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.1s forwards;
+    }
+
+    .stat-item { }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 42px;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    /* ── SECTION SCAFFOLDING ── */
+    section { padding: 100px 60px; }
+    section:nth-child(even) { background: rgba(13,18,25,0.6); }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 64px;
+    }
+
+    .section-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--cyan);
+      letter-spacing: 0.1em;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 5vw, 56px);
+      color: var(--text-bright);
+      letter-spacing: 0.02em;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--border), transparent);
+    }
+
+    /* ── ABOUT ── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 19px;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .about-text p strong {
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    .about-details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .detail-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--cyan);
+    }
+
+    .detail-key {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      min-width: 80px;
+      padding-top: 2px;
+    }
+
+    .detail-val {
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience .timeline { position: relative; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--cyan), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 52px 48px;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.6s ease;
+    }
+
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -6px;
+      top: 6px;
+      width: 13px;
+      height: 13px;
+      background: var(--bg);
+      border: 2px solid var(--cyan);
+      transform: rotate(45deg);
+    }
+
+    .timeline-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .timeline-role {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--text-bright);
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .timeline-company {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .timeline-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .timeline-bullets li {
+      font-size: 16px;
+      color: var(--text-dim);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .timeline-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-size: 12px;
+    }
+
+    .timeline-bullets li strong { color: var(--text); font-weight: 600; }
+
+    /* ── SKILLS ── */
+    #skills .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--cyan), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .skill-card:hover { background: var(--bg3); border-color: rgba(0,212,255,0.3); }
+    .skill-card:hover::before { transform: scaleX(1); }
+
+    .skill-cat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      background: rgba(0,212,255,0.06);
+      border: 1px solid rgba(0,212,255,0.15);
+      color: var(--text);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── PROJECTS ── */
+    #projects .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 36px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--amber), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover { background: var(--bg3); }
+    .project-card:hover::after { opacity: 1; }
+
+    .project-index {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: rgba(0,212,255,0.08);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .project-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: var(--text-bright);
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    .project-desc {
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .project-metric {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--amber);
+      background: rgba(255,170,0,0.08);
+      border: 1px solid rgba(255,170,0,0.2);
+      padding: 4px 10px;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── EDUCATION ── */
+    #education .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2px;
+    }
+
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 32px;
+      transition: all 0.25s;
+    }
+
+    .edu-card:hover { border-color: rgba(0,212,255,0.3); }
+
+    .edu-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+
+    .edu-degree {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: var(--cyan);
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+
+    .edu-school {
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .edu-grade {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+      margin-top: 8px;
+    }
+
+    .edu-modules {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    /* ── CERTIFICATIONS ── */
+    #certs .certs-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+    }
+
+    .cert-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px 28px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex: 1;
+      min-width: 240px;
+      transition: all 0.2s;
+    }
+
+    .cert-item:hover { border-color: rgba(0,212,255,0.3); }
+
+    .cert-year {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: rgba(0,212,255,0.3);
+      line-height: 1;
+      min-width: 60px;
+    }
+
+    .cert-name {
+      font-size: 16px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .cert-issuer {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+
+    /* ── RESEARCH INTERESTS ── */
+    #research .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+    }
+
+    .research-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .research-card::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at center, rgba(0,212,255,0.04) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .research-card:hover::before { opacity: 1; }
+    .research-card:hover { border-color: rgba(0,212,255,0.25); }
+
+    .research-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .research-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      color: var(--cyan);
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+
+    .research-desc {
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      text-align: center;
+      padding: 120px 60px;
+      background: var(--bg2);
+    }
+
+    #contact .contact-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    #contact h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 8vw, 96px);
+      color: var(--text-bright);
+      line-height: 0.95;
+      margin-bottom: 24px;
+    }
+
+    #contact h2 .accent { color: var(--cyan); }
+
+    #contact p {
+      font-size: 18px;
+      color: var(--text-dim);
+      max-width: 520px;
+      margin: 0 auto 48px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 60px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg);
+    }
+
+    .footer-copy {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-loc {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-loc span { color: var(--cyan); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      #hero { padding: 120px 24px 60px; }
+      section { padding: 80px 24px; }
+      #about .about-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+      #contact { padding: 80px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Sai<span>.Prasanth</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-tag">// Stuttgart, Germany · Available for opportunities</div>
+    <h1 class="hero-name">
+      Sai<br>
+      Prasanth<br>
+      <span class="accent">Parnambedu</span>
+    </h1>
+    <p class="hero-subtitle">
+      Robotics &amp; Software Engineer — bridging industrial AI with autonomous systems,
+      force-controlled manipulation, and machine learning–driven automation.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      <a href="mailto:sai@example.com" class="btn btn-ghost">Email Me</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">95%</div>
+        <div class="stat-label">Navigation Success Rate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Trial Validations</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Robotic Cells Commissioned</div>
+      </div>
+    </div>
+    <div class="hero-bg-text">ROBOT</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a <strong>Robotics &amp; Software Engineer</strong> with deep expertise in
+          ROS/ROS2, C++, Python, and robotic system integration — gained through hands-on
+          research at <strong>Fraunhofer IPA</strong>, one of Europe's premier applied
+          science institutes.
+        </p>
+        <p>
+          Holding a Master's in Mechatronics and currently pursuing an M.Eng. in
+          <strong>Applied AI for Digital Production Management</strong>, I'm laser-focused
+          on fusing artificial intelligence with industrial robotics — building smarter,
+          adaptive systems for the factories of tomorrow.
+        </p>
+        <p>
+          My work spans trajectory validation, compliant manipulation pipelines,
+          computer vision defect detection, and ML-driven fault prediction — always
+          backed by rigorous experimentation and clean, maintainable engineering.
+        </p>
+      </div>
+      <div class="about-details">
+        <div class="detail-row">
+          <div class="detail-key">Location</div>
+          <div class="detail-val">Stuttgart, Germany</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Status</div>
+          <div class="detail-val">Pursuing M.Eng. Applied AI · Open to roles</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Focus</div>
+          <div class="detail-val">AI-driven Robotics &amp; Industrial Automation</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">Languages</div>
+          <div class="detail-val">English (C2) · German (B1)</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">GitHub</div>
+          <div class="detail-val"><a href="https://github.com" style="color:var(--cyan);text-decoration:none;">Open-source contributor →</a></div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-key">LinkedIn</div>
+          <div class="detail-val"><a href="https://www.linkedin.com/in/sai-prasanth-parnu/" style="color:var(--cyan);text-decoration:none;">sai-prasanth-parnu →</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">April 2024 — Present</div>
+        <div class="timeline-role">Independent Robotics &amp; AI Engineer</div>
+        <div class="timeline-company">Freelance / Remote</div>
+        <ul class="timeline-bullets">
+          <li>Trained <strong>YOLOv8</strong> and MobileNetV2 vision models on synthetic datasets, integrated into RoboDK simulated robotic cell for automotive defect detection.</li>
+          <li>Built ML pipelines for wind turbine health monitoring using rolling variance with Isolation Forest — achieving <strong>F1-score &gt; 0.85</strong>.</li>
+          <li>Published and maintained open-source repositories (Tiago Robot Project, Sentiment Analysis) with ROS, MoveIt, scikit-learn, and TensorFlow.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">December 2021 — August 2023</div>
+        <div class="timeline-role">Working Student — Robotics</div>
+        <div class="timeline-company">Fraunhofer IPA · Stuttgart, Germany</div>
+        <ul class="timeline-bullets">
+          <li>Validated robot trajectories with <strong>rosbag, FastDTW</strong> and Python, improving accuracy verification workflows.</li>
+          <li>Integrated trajectory tests into <strong>GitLab CI/CD</strong>, reducing regression errors by 25%.</li>
+          <li>Commissioned <strong>3 robotic cells</strong> with TCP/IP and Profinet multi-sensor communication.</li>
+          <li>3D printed custom fixtures for robot endurance tests; delivered 5+ onboarding sessions.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">August 2022 — March 2023</div>
+        <div class="timeline-role">Master Thesis — Force Control</div>
+        <div class="timeline-company">Fraunhofer IPA · Stuttgart, Germany</div>
+        <ul class="timeline-bullets">
+          <li>Developed a <strong>digital twin</strong> of a mobile manipulator in Gazebo for autonomous navigation and manipulation testing.</li>
+          <li>Built a force-controlled pipeline integrating joint-space and Cartesian-space modules for compliant manipulation.</li>
+          <li>Validated across <strong>100+ trials</strong>: &gt;95% navigation success in variable environments.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">January 2019 — July 2019</div>
+        <div class="timeline-role">Quality Control Engineer</div>
+        <div class="timeline-company">Pennar Industries Ltd · Chennai, India</div>
+        <ul class="timeline-bullets">
+          <li>Improved inspection throughput from <strong>12 to 14 checks/day</strong>.</li>
+          <li>Reduced railway wagon part rejection rate by <strong>7%</strong> via root-cause analysis.</li>
+          <li>Standardized inspection templates to minimize dimensional deviations.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-index">01</div>
+        <div class="project-title">Smart Inspection Cell</div>
+        <div class="project-desc">
+          YOLOv8 &amp; MobileNetV2 vision models trained on synthetic datasets, integrated into
+          a RoboDK-simulated robotic cell. Benchmarked inference latency and productivity
+          rate for automotive component defect detection.
+        </div>
+        <div class="project-metric">YOLOv8 · MobileNetV2 · RoboDK</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-index">02</div>
+        <div class="project-title">Wind Turbine Health Monitor</div>
+        <div class="project-desc">
+          End-to-end ML pipeline for predictive maintenance using rolling variance combined
+          with Isolation Forest anomaly detection. Presented at a University tech seminar
+          as a team lead of 5 engineers.
+        </div>
+        <div class="project-metric">F1 &gt; 0.85 · WeDoWind Challenge</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-index">03</div>
+        <div class="project-title">Force-Controlled Mobile Manipulator</div>
+        <div class="project-desc">
+          Digital twin in Gazebo for a mobile manipulator with a full force-controlled
+          pipeline. Joint-space and Cartesian-space compliant manipulation across
+          100+ validation trials.
+        </div>
+        <div class="project-metric">&gt;95% Navigation Success · Gazebo · ROS</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-index">04</div>
+        <div class="project-title">Tiago Robot Project</div>
+        <div class="project-desc">
+          Open-source ROS/MoveIt-based robotics project featuring autonomous manipulation
+          tasks for the TIAGo mobile platform. Publicly maintained with detailed documentation.
+        </div>
+        <div class="project-metric">ROS · MoveIt · Open Source</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-index">05</div>
+        <div class="project-title">Trajectory Validation Pipeline</div>
+        <div class="project-desc">
+          Automated robot trajectory validation using rosbag replay and FastDTW distance
+          metrics. Fully integrated into GitLab CI/CD for continuous regression testing.
+        </div>
+        <div class="project-metric">−25% Regression Errors · GitLab CI/CD</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-index">06</div>
+        <div class="project-title">Sentiment Analysis Project</div>
+        <div class="project-desc">
+          Open-source NLP project applying scikit-learn and TensorFlow for text
+          sentiment classification. Published with full documentation as a portfolio
+          ML reference.
+        </div>
+        <div class="project-metric">scikit-learn · TensorFlow · NLP</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-cat">Core Robotics</div>
+        <div class="skill-tags">
+          <span class="tag">ROS</span><span class="tag">ROS2</span>
+          <span class="tag">MoveIt</span><span class="tag">MoveBase</span>
+          <span class="tag">Gazebo</span><span class="tag">Rviz</span>
+          <span class="tag">ros_control</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Programming &amp; AI/ML</div>
+        <div class="skill-tags">
+          <span class="tag">Python</span><span class="tag">C++</span>
+          <span class="tag">MATLAB</span><span class="tag">scikit-learn</span>
+          <span class="tag">TensorFlow</span><span class="tag">OpenCV</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Industrial Automation</div>
+        <div class="skill-tags">
+          <span class="tag">TIA Portal</span><span class="tag">RSLogix</span>
+          <span class="tag">Simatic S7</span><span class="tag">ABB RobotStudio</span>
+          <span class="tag">TCP/IP</span><span class="tag">Profinet</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Simulation &amp; CAD</div>
+        <div class="skill-tags">
+          <span class="tag">RoboDK</span><span class="tag">MuJoCo</span>
+          <span class="tag">CATIA</span><span class="tag">SolidWorks</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Tools &amp; DevOps</div>
+        <div class="skill-tags">
+          <span class="tag">Git</span><span class="tag">Docker</span>
+          <span class="tag">AWS</span><span class="tag">GitLab CI/CD</span>
+          <span class="tag">Jira</span><span class="tag">Pytest</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Languages &amp; Soft Skills</div>
+        <div class="skill-tags">
+          <span class="tag">English C2</span><span class="tag">German B1</span>
+          <span class="tag">Agile</span><span class="tag">Cross-functional</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Education</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-year">March 2025 — Ongoing</div>
+        <div class="edu-degree">M.Eng. Applied AI for Digital Production Management</div>
+        <div class="edu-school">Technische Hochschule Deggendorf, Germany</div>
+        <div class="edu-grade">Grade: 2.1</div>
+        <div class="edu-modules">Production Data Management · ML Algorithms · Statistical Methods</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year">October 2019 — August 2023</div>
+        <div class="edu-degree">M.Sc. Mechatronics</div>
+        <div class="edu-school">Ravensburg Weingarten University, Germany</div>
+        <div class="edu-grade">Grade: 2.5</div>
+        <div class="edu-modules">Robotics · Computer Vision · Control Systems</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year">July 2014 — May 2018</div>
+        <div class="edu-degree">B.Tech. Mechanical Engineering</div>
+        <div class="edu-school">SRM Institute of Science and Technology, India</div>
+        <div class="edu-grade">Grade: 1.8</div>
+        <div class="edu-modules">Finite Element Methods · CAD/CAM</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certs">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Certifications</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="certs-list">
+      <div class="cert-item">
+        <div class="cert-year">2025</div>
+        <div>
+          <div class="cert-name">AWS Cloud Practitioner Essentials</div>
+          <div class="cert-issuer">Amazon Web Services</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-year">2024</div>
+        <div>
+          <div class="cert-name">Industrial Robotics Programming</div>
+          <div class="cert-issuer">Universal Robots Academy</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-year">2022</div>
+        <div>
+          <div class="cert-name">ROS2 for Beginners</div>
+          <div class="cert-issuer">Udemy</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-year">2021</div>
+        <div>
+          <div class="cert-name">Neural Networks &amp; Deep Learning</div>
+          <div class="cert-issuer">Coursera / deeplearning.ai</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-year">2021</div>
+        <div>
+          <div class="cert-name">Python Bootcamp</div>
+          <div class="cert-issuer">Udemy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH INTERESTS -->
+  <section id="research">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Research Interests</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="research-grid">
+      <div class="research-card">
+        <div class="research-icon">🤖</div>
+        <div class="research-title">Intelligent Robotics</div>
+        <div class="research-desc">AI-driven motion planning and reinforcement learning for autonomous robotic systems.</div>
+      </div>
+      <div class="research-card">
+        <div class="research-icon">🤝</div>
+        <div class="research-title">Human–Robot Collaboration</div>
+        <div class="research-desc">Shared autonomy and safe interaction frameworks in dynamic, real-world environments.</div>
+      </div>
+      <div class="research-card">
+        <div class="research-icon">🏭</div>
+        <div class="research-title">Digital Production &amp; Industrial AI</div>
+        <div class="research-desc">Digital twins and data-driven optimization for smart, adaptive manufacturing.</div>
+      </div>
+      <div class="research-card">
+        <div class="research-icon">👁️</div>
+        <div class="research-title">Computer Vision &amp; Perception</div>
+        <div class="research-desc">Sensor fusion and deep learning for robust robotic perception and scene understanding.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-tag">// Let's build something</div>
+    <h2>Let's<br><span class="accent">Connect</span></h2>
+    <p>
+      Open to robotics engineering roles, research collaborations, and AI/automation
+      projects across Germany and Europe.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:sai@example.com" class="btn btn-primary">Send Email</a>
+      <a href="https://www.linkedin.com/in/sai-prasanth-parnu/" class="btn btn-ghost" target="_blank">LinkedIn</a>
+      <a href="https://github.com" class="btn btn-ghost" target="_blank">GitHub</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-copy">© 2026 Sai Prasanth Parnambedu</div>
+    <div class="footer-loc">📍 <span>Stuttgart</span>, Germany</div>
+  </footer>
+
+  <script>
+    // Scroll-triggered animation for timeline items
+    const items = document.querySelectorAll('.timeline-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+    items.forEach(i => observer.observe(i));
+
+    // Smooth active nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current
+          ? 'var(--cyan)' : '';
+      });
+    });
+  </script>
+
+</body>
+</html>
