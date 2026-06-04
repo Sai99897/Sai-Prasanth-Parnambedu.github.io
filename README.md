@@ -13,11 +13,17 @@ Open [http://localhost:8080](http://localhost:8080).
 
 ## Deploy to GitHub Pages
 
-You have [Sai-Prasanth-Parnambedu.github.io](https://github.com/Sai99897/Sai-Prasanth-Parnambedu.github.io). To publish:
+**Use branch deploy (not GitHub Actions).** This is a static site — no build step needed.
 
-1. Copy these files into that repository root (`index.html`, `styles.css`, `script.js`, `assets/`).
-2. Commit and push to `main`.
-3. Enable GitHub Pages (Settings → Pages → branch `main`, folder `/`).
+1. Push: `./deploy.sh`
+2. **Public repo:** [Settings → Danger Zone → Public](https://github.com/Sai99897/Sai-Prasanth-Parnambedu.github.io/settings)
+3. **Enable Pages:** [Settings → Pages](https://github.com/Sai99897/Sai-Prasanth-Parnambedu.github.io/settings/pages)
+   - Source: **Deploy from a branch**
+   - Branch: **main** · Folder: **/ (root)**
+   - Save
+4. Live URL (after ~2–5 min): https://sai99897.github.io/Sai-Prasanth-Parnambedu.github.io/
+
+Do **not** select "GitHub Actions" as the Pages source unless you add a workflow back.
 
 ## Files
 
