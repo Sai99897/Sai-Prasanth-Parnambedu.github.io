@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sai Prasanth Parnambedu — Robotics & Software Engineer specializing in ROS/ROS2, AI integration, and industrial automation.">
+  <title>Sai Prasanth Parnambedu | Robotics & AI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--2" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#hero" class="nav__logo">SP<span class="nav__logo-accent">.</span></a>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="hero__eyebrow">Stuttgart, Germany · NEURA Robotics · Open to collaborations</p>
+          <h1 class="hero__title">
+            Sai Prasanth<br>
+            <span class="hero__title-accent">Parnambedu</span>
+          </h1>
+          <p class="hero__subtitle">
+            Robotics &amp; Software Engineer — bridging industrial AI with autonomous systems,
+            force-controlled manipulation, and machine learning–driven automation.
+          </p>
+          <div class="hero__actions">
+            <a href="#projects" class="btn btn--primary">View Projects</a>
+            <a href="assets/Sai_Prasanth_Parnambedu_CV.pdf" class="btn btn--outline" download>Download CV</a>
+            <a href="#contact" class="btn btn--outline">Get in Touch</a>
+            <a href="mailto:saiprasanthparnu@gmail.com" class="btn btn--outline">Email Me</a>
+          </div>
+          <div class="hero__social">
+            <a href="https://github.com/Sai99897" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/sai-prasanth-parnu/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.126 0 2.063 2.063 0 01-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__card">
+            <div class="hero__card-header">
+              <span class="dot dot--red"></span>
+              <span class="dot dot--yellow"></span>
+              <span class="dot dot--green"></span>
+              <span class="hero__card-title">robot_controller.py</span>
+            </div>
+            <pre class="hero__code"><code><span class="code-kw">class</span> <span class="code-class">RoboticsEngineer</span>:
+    <span class="code-kw">def</span> <span class="code-fn">__init__</span>(self):
+        self.skills = [<span class="code-str">"ROS2"</span>, <span class="code-str">"Python"</span>, <span class="code-str">"C++"</span>]
+        self.focus = <span class="code-str">"AI + Automation"</span>
+        self.employer = <span class="code-str">"NEURA Robotics"</span>
+        self.location = <span class="code-str">"Stuttgart, DE"</span>
+
+    <span class="code-kw">def</span> <span class="code-fn">build</span>(self, project):
+        <span class="code-kw">return</span> project.deploy(
+            validate=<span class="code-bool">True</span>,
+            ci_cd=<span class="code-bool">True</span>
+        )</code></pre>
+          </div>
+          <div class="hero__stats">
+            <div class="stat">
+              <span class="stat__value">3+</span>
+              <span class="stat__label">Years Experience</span>
+            </div>
+            <div class="stat">
+              <span class="stat__value">95%</span>
+              <span class="stat__label">Navigation Success</span>
+            </div>
+            <div class="stat">
+              <span class="stat__value">100+</span>
+              <span class="stat__label">Trial Validations</span>
+            </div>
+            <div class="stat">
+              <span class="stat__value">3</span>
+              <span class="stat__label">Robotic Cells Commissioned</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#about" class="hero__scroll" aria-label="Scroll down">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">About</span>
+          <h2 class="section__title">Profile</h2>
+        </div>
+        <div class="about__grid">
+          <div class="about__text">
+            <p>
+              Robotics & Software Engineer with 3+ years of experience in ROS/ROS2, C++, Python,
+              and robotic system integration — currently at NEURA Robotics and previously at Fraunhofer IPA.
+              I hold a Master's in Mechatronics
+              and am currently pursuing Applied AI for Digital Production Management, aiming to
+              bridge artificial intelligence with industrial robotics.
+            </p>
+            <p>
+              My work spans trajectory validation, compliant manipulation pipelines,
+              computer vision defect detection, and ML-driven fault prediction — backed by
+              rigorous experimentation and maintainable engineering.
+            </p>
+          </div>
+          <div class="about__details">
+            <div class="detail-card">
+              <span class="detail-card__icon">📍</span>
+              <div>
+                <strong>Location</strong>
+                <p>Stuttgart, Germany</p>
+              </div>
+            </div>
+            <div class="detail-card">
+              <span class="detail-card__icon">💼</span>
+              <div>
+                <strong>Status</strong>
+                <p>Data Operator @ NEURA Robotics · Pursuing M.Eng. Applied AI</p>
+              </div>
+            </div>
+            <div class="detail-card">
+              <span class="detail-card__icon">🎯</span>
+              <div>
+                <strong>Focus</strong>
+                <p>AI-driven robotics &amp; industrial automation</p>
+              </div>
+            </div>
+            <div class="detail-card">
+              <span class="detail-card__icon">🗣️</span>
+              <div>
+                <strong>Languages</strong>
+                <p>English (C2) · German (B1)</p>
+              </div>
+            </div>
+            <div class="detail-card">
+              <span class="detail-card__icon">⌨️</span>
+              <div>
+                <strong>GitHub</strong>
+                <p><a class="detail-card__link" href="https://github.com/Sai99897" target="_blank" rel="noopener noreferrer">Open-source contributor →</a></p>
+              </div>
+            </div>
+            <div class="detail-card">
+              <span class="detail-card__icon">🔗</span>
+              <div>
+                <strong>LinkedIn</strong>
+                <p><a class="detail-card__link" href="https://www.linkedin.com/in/sai-prasanth-parnu/" target="_blank" rel="noopener noreferrer">sai-prasanth-parnu →</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="experience">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Career</span>
+          <h2 class="section__title">Work Experience</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__body">
+              <div class="timeline__logo timeline__logo--dark">
+                <img src="assets/logos/neura.svg" alt="NEURA Robotics logo" width="160" height="20" loading="lazy" />
+              </div>
+              <div class="timeline__content">
+                <div class="timeline__meta">
+                  <span class="timeline__date">Apr 2026 — Present</span>
+                  <span class="timeline__badge">Current</span>
+                </div>
+                <h3 class="timeline__role">Data Operator</h3>
+                <p class="timeline__org">NEURA Robotics, Stuttgart</p>
+                <ul class="timeline__list">
+                  <li>Responsible for teleoperating humanoid robots for data acquisition.</li>
+                  <li>Generate automated Bash scripts for startup processes of different robots.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__body">
+              <div class="timeline__logo">
+                <img src="assets/logos/freelance.svg" alt="Freelance" width="64" height="64" loading="lazy" />
+              </div>
+              <div class="timeline__content">
+                <div class="timeline__meta">
+                  <span class="timeline__date">Apr 2024 — Mar 2026</span>
+                  <span class="timeline__badge">Freelance</span>
+                </div>
+                <h3 class="timeline__role">Independent Robotics & AI Engineer</h3>
+                <p class="timeline__org">Remote</p>
+                <ul class="timeline__list">
+                  <li>Trained YOLOv8 and MobileNetV2 vision models on synthetic datasets, integrated into RoboDK simulated inspection cells for automotive defect detection.</li>
+                  <li>Built ML pipelines for wind turbine health monitoring with isolation forest, achieving F1-score &gt; 0.85.</li>
+                  <li>Published open-source robotics and ML repositories (Tiago Robot, Sentiment Analysis) with ROS, MoveIt, and scikit-learn.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__body">
+              <div class="timeline__logo">
+                <img src="assets/logos/fraunhofer.png" alt="Fraunhofer logo" width="80" height="80" loading="lazy" />
+              </div>
+              <div class="timeline__content">
+                <div class="timeline__meta">
+                  <span class="timeline__date">Dec 2021 — Aug 2023</span>
+                </div>
+                <h3 class="timeline__role">Working Student in Robotics</h3>
+                <p class="timeline__org">Fraunhofer IPA, Stuttgart</p>
+                <ul class="timeline__list">
+                  <li>Validated robot trajectories with rosbag, FastDTW and Python; integrated tests into GitLab CI/CD, reducing regression errors by 25%.</li>
+                  <li>Commissioned 3 robotic cells with TCP/IP and Profinet for multi-sensor communication.</li>
+                  <li>Designed 3D-printed fixtures for endurance tests; delivered 5+ onboarding sessions and 3 colloquium talks.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__body">
+              <div class="timeline__logo">
+                <img src="assets/logos/fraunhofer.png" alt="Fraunhofer logo" width="80" height="80" loading="lazy" />
+              </div>
+              <div class="timeline__content">
+                <div class="timeline__meta">
+                  <span class="timeline__date">Aug 2022 — Mar 2023</span>
+                  <span class="timeline__badge">Thesis</span>
+                </div>
+                <h3 class="timeline__role">Master Thesis — Force Control with Mobile Manipulator</h3>
+                <p class="timeline__org">Fraunhofer IPA, Stuttgart</p>
+                <ul class="timeline__list">
+                  <li>Developed a digital twin of a mobile manipulator in Gazebo for autonomous navigation and manipulation.</li>
+                  <li>Integrated joint- and Cartesian-space modules into a force-controlled pipeline for compliant manipulation.</li>
+                  <li>Validated across 100+ trials with &gt;95% navigation success in variable environments.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__body">
+              <div class="timeline__logo">
+                <img src="assets/logos/pennar.png" alt="Pennar Industries logo" width="80" height="80" loading="lazy" />
+              </div>
+              <div class="timeline__content">
+                <div class="timeline__meta">
+                  <span class="timeline__date">Jan 2019 — Jul 2019</span>
+                </div>
+                <h3 class="timeline__role">Quality Control Engineer</h3>
+                <p class="timeline__org">Pennar Industries Ltd, Chennai</p>
+                <ul class="timeline__list">
+                  <li>Improved inspection throughput from 12 to 14 checks/day.</li>
+                  <li>Reduced railway wagon part rejection rate by 7% through root-cause analysis.</li>
+                  <li>Standardized inspection templates to minimize dimensional deviations.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="projects">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Portfolio</span>
+          <h2 class="section__title">Featured Projects</h2>
+          <p class="section__desc">Selected work from my GitHub and Fraunhofer research — includes demo videos from live robotics experiments.</p>
+        </div>
+        <div class="cards-grid cards-grid--projects" id="projectsGrid">
+          <!-- Populated by JS -->
+        </div>
+        <div class="projects__cta">
+          <a href="https://github.com/Sai99897" target="_blank" rel="noopener noreferrer" class="btn btn--outline">
+            View All Repositories →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Expertise</span>
+          <h2 class="section__title">Skills & Technologies</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h3 class="skill-group__title">Core Robotics</h3>
+            <div class="skill-tags">
+              <span>ROS</span><span>ROS2</span><span>MoveIt</span><span>MoveBase</span>
+              <span>Gazebo</span><span>Rviz</span><span>ros_control</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-group__title">Programming & AI/ML</h3>
+            <div class="skill-tags">
+              <span>Python</span><span>C++</span><span>MATLAB</span><span>scikit-learn</span>
+              <span>TensorFlow</span><span>OpenCV</span><span>PyTorch</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-group__title">Industrial Automation</h3>
+            <div class="skill-tags">
+              <span>PLCs</span><span>TIA Portal</span><span>RSLogix</span><span>Simatic S7</span>
+              <span>ABB RobotStudio</span><span>TCP/IP</span><span>Profinet</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-group__title">Simulation & CAD</h3>
+            <div class="skill-tags">
+              <span>RoboDK</span><span>MuJoCo</span><span>CATIA</span><span>SolidWorks</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-group__title">Tools & DevOps</h3>
+            <div class="skill-tags">
+              <span>Git</span><span>Docker</span><span>AWS</span><span>GitLab CI/CD</span>
+              <span>Jira</span><span>Pytest</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-group__title">Languages &amp; Soft Skills</h3>
+            <div class="skill-tags">
+              <span>English (C2)</span><span>German (B1)</span><span>Agile</span><span>Cross-functional teamwork</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="education">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Education</span>
+          <h2 class="section__title">Academic Background</h2>
+        </div>
+        <div class="cards-grid cards-grid--3">
+          <article class="edu-card">
+            <span class="edu-card__period">March 2025 — Ongoing</span>
+            <h3 class="edu-card__degree">M.Eng. Applied AI for Digital Production Management</h3>
+            <p class="edu-card__school">Technische Hochschule Deggendorf, Germany</p>
+            <span class="edu-card__grade">Grade: 2.1</span>
+            <p class="edu-card__modules">Production Data Management · ML Algorithms · Statistical Methods</p>
+          </article>
+          <article class="edu-card">
+            <span class="edu-card__period">October 2019 — August 2023</span>
+            <h3 class="edu-card__degree">M.Sc. Mechatronics</h3>
+            <p class="edu-card__school">Ravensburg Weingarten University, Germany</p>
+            <span class="edu-card__grade">Grade: 2.5</span>
+            <p class="edu-card__modules">Robotics · Computer Vision · Control Systems</p>
+          </article>
+          <article class="edu-card">
+            <span class="edu-card__period">July 2014 — May 2018</span>
+            <h3 class="edu-card__degree">B.Tech. Mechanical Engineering</h3>
+            <p class="edu-card__school">SRM Institute of Science and Technology, India</p>
+            <span class="edu-card__grade">Grade: 1.8</span>
+            <p class="edu-card__modules">Finite Element Methods · CAD/CAM</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="certifications">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Credentials</span>
+          <h2 class="section__title">Certifications</h2>
+        </div>
+        <ul class="cert-list">
+          <li class="cert-item">
+            <span class="cert-item__year">2025</span>
+            <div>
+              <strong class="cert-item__name">AWS Cloud Practitioner Essentials</strong>
+              <span class="cert-item__issuer">Amazon Web Services</span>
+            </div>
+          </li>
+          <li class="cert-item">
+            <span class="cert-item__year">2024</span>
+            <div>
+              <strong class="cert-item__name">Industrial Robotics Programming</strong>
+              <span class="cert-item__issuer">Universal Robots Academy</span>
+            </div>
+          </li>
+          <li class="cert-item">
+            <span class="cert-item__year">2022</span>
+            <div>
+              <strong class="cert-item__name">ROS2 for Beginners</strong>
+              <span class="cert-item__issuer">Udemy</span>
+            </div>
+          </li>
+          <li class="cert-item">
+            <span class="cert-item__year">2021</span>
+            <div>
+              <strong class="cert-item__name">Neural Networks &amp; Deep Learning</strong>
+              <span class="cert-item__issuer">Coursera / deeplearning.ai</span>
+            </div>
+          </li>
+          <li class="cert-item">
+            <span class="cert-item__year">2021</span>
+            <div>
+              <strong class="cert-item__name">Python Bootcamp</strong>
+              <span class="cert-item__issuer">Udemy</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="research">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__tag">Interests</span>
+          <h2 class="section__title">Research Focus</h2>
+        </div>
+        <div class="cards-grid cards-grid--2">
+          <article class="research-card">
+            <div class="research-card__icon">🤖</div>
+            <h3>Intelligent Robotics</h3>
+            <p>AI-driven motion planning and reinforcement learning for autonomous robotic systems.</p>
+          </article>
+          <article class="research-card">
+            <div class="research-card__icon">🤝</div>
+            <h3>Human–Robot Collaboration</h3>
+            <p>Shared autonomy and safe interaction frameworks in dynamic, real-world environments.</p>
+          </article>
+          <article class="research-card">
+            <div class="research-card__icon">🏭</div>
+            <h3>Digital Production & Industrial AI</h3>
+            <p>Digital twins and data-driven optimization for smart, adaptive manufacturing.</p>
+          </article>
+          <article class="research-card">
+            <div class="research-card__icon">👁️</div>
+            <h3>Computer Vision & Perception</h3>
+            <p>Sensor fusion and deep learning for robust robotic perception and scene understanding.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact__inner">
+          <div class="contact__info">
+            <div class="section__header section__header--left">
+              <span class="section__tag">Contact</span>
+              <h2 class="section__title">Let's Connect</h2>
+              <p class="section__desc">
+                Open to robotics engineering roles, research collaborations, and AI/automation
+                projects across Germany and Europe. Based in Stuttgart, Germany.
+              </p>
+            </div>
+            <div class="contact__links">
+              <a href="mailto:saiprasanthparnu@gmail.com" class="contact__link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                saiprasanthparnu@gmail.com
+              </a>
+              <a href="tel:+4917656530270" class="contact__link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                +49 176 56530270
+              </a>
+              <a href="https://github.com/Sai99897" target="_blank" rel="noopener noreferrer" class="contact__link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                github.com/Sai99897
+              </a>
+              <a href="https://www.linkedin.com/in/sai-prasanth-parnu/" target="_blank" rel="noopener noreferrer" class="contact__link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.126 0 2.063 2.063 0 01-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                linkedin.com/in/sai-prasanth-parnu
+              </a>
+            </div>
+          </div>
+          <form class="contact__form" id="contactForm">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" required placeholder="Tell me about your project or opportunity..."></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>&copy; 2026 Sai Prasanth Parnambedu</p>
+      <p class="footer__location">Stuttgart, Germany</p>
+      <a href="#hero" class="footer__top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
